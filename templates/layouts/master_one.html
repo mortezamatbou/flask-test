@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5/css/bootstrap.min.css') }}"> -->
+    <link rel="stylesheet" href="/static/bootstrap-4.5/css/bootstrap.min.css">
+    <title>{% block title required %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-5 col-12 p-5" style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 5px;">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='jquery/jquery-3.3.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery/jquery-3.3.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-4.5/js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>

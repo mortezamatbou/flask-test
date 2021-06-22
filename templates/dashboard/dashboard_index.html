@@ -1,0 +1,47 @@
+{% extends "layouts/master_one.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-8 col-10">
+            <h3 class="text-left">Welcome <b>{{ user.username }}</b></h3>
+        </div>
+        <div class="col-md-4 col-2 text-right">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <p class="alert alert-success">Your ID <b>{{ user.id }}</b></p>
+    <hr>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h5>Recent Transactions</h5>
+            <table class="table table-bordered text-center">
+                <tr>
+                    <td style="font-weight: bold">ID</td>
+                    <td style="font-weight: bold">Title</td>
+                    <td style="font-weight: bold">Amount</td>
+                    <td style="font-weight: bold">Date</td>
+                    <td style="font-weight: bold">Status</td>
+                </tr>
+                {% for row in transactions %}
+                    <tr>
+                        <td>{{ row.id }}</td>
+                        <td><a href="/transactions/{{ row.id }}">{{ row.title }}</a></td>
+                        <td>{{ row.amount }}</td>
+                        <td>{{ row.date_add }}</td>
+                        <td>{{ "New" if row.status == 1 else "Ok" }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="col-12">
+            <h5>Add new transaction <a href="/dashboard/transactions" class="btn btn-success btn-sm">+</a></h5>
+        </div>
+
+    </div>
+
+{% endblock %}

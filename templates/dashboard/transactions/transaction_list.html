@@ -1,0 +1,35 @@
+{% extends "layouts/master_one.html" %}
+
+{% block title %}{{ param.title }}{% endblock %}
+
+{% block body %}
+    <h4 class="text-center">Transactions List</h4>
+    <div class="col-12 mt-4">
+        <table class="table table-bordered text-center">
+            <tr>
+                <td style="font-weight: bold">ID</td>
+                <td style="font-weight: bold">Title</td>
+                <td style="font-weight: bold">Amount</td>
+                <td style="font-weight: bold">Date</td>
+                <td style="font-weight: bold">Status</td>
+            </tr>
+            {% for row in param.transactions %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td><a href="/transactions/{{ row.id }}">{{ row.title }}</a></td>
+                    <td>{{ row.amount }}</td>
+                    <td>{{ row.date_add }}</td>
+                    <td>
+                        {% if row.status == 1 %}
+                            New
+                        {% elif row.status == 2 %}
+                            Accepted
+                        {% elif row.status == 3 %}
+                            Rejected
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

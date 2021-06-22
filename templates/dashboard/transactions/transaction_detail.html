@@ -1,0 +1,33 @@
+{% extends "layouts/master_one.html" %}
+
+{% block title %}{{ param.title }}{% endblock %}
+
+{% block body %}
+<h4 class="text-center">Add New Transaction</h4>
+<form action="/add_transactions" method="POST">
+    <input type="hidden" name="id" value="{{ trans.id }}">
+    <div class="form-group">
+        <label>Amount</label>
+        <input class="form-control" type="text" name="amount" autocomplete="off" value="{{ trans.amount }}">
+    </div>
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="title" autocomplete="off" value="{{ trans.title }}">
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input class="form-control" type="date" name="date" autocomplete="off" value="{{ trans.date_add }}">
+    </div>
+    <div class="form-group">
+        <label>Status</label>
+        <select class="form-control" name="status">
+            <option value="1">New</option>
+            <option value="2">Accepted</option>
+            <option value="3">Rejected</option>
+        </select>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+{% endblock %}
